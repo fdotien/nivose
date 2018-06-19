@@ -1,0 +1,83 @@
+@charset "ISO-8859-1";
+
+/* tofbook logo */
+.tofbook-logo{
+	text-align: center;
+    display: block;
+    padding-top: 30px;
+}
+
+.tofbook-logo a {
+    background: 0 0;
+}
+
+ .page-big-text {
+ 	 font-family: Century Gothic;
+	 margin: .67em 0;
+     word-wrap: break-word;
+     font-size: 60px;
+}
+
+.page-big-text, h2, h3 {
+    letter-spacing: -1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,.2);
+}
+.page-big-text, h2, h3{
+    margin-top: 19px;
+    margin-bottom: 14.5px;
+}
+.page-big-text, h2, h3, h4, h5, h6{
+    font-weight: 300;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom:60px;
+}
+ 	
+.page-content-wrap {
+    text-align: center;
+    -webkit-animation: fade-in-down 1s .25s;
+    animation: fade-in-down 1s .25s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width: 992px) {
+    .page-big-text {
+    font-size: 42px;
+    }
+}
+
+/* On screens that are 600px wide or less, the background color is olive */
+@media screen and (max-width: 600px) {
+    .page-big-text {
+    font-size: 26px;
+    }
+}
+
+.home-buttons{
+	padding-top:15px!important;
+	font-size: 30px!important;
+	height:60px;
+	width:300px;
+	margin:10px;
+}
+
+.home-buttons:hover{
+	background-color: #DDD;
+}
+
+.bellow-text{
+	margin-top: 20px!important;
+	margin-bottom: 60px!important;
+}
+.features{
+	color:#33414e;
+	margin-bottom:40px;
+	font-size: 18px!important;
+	}
+	
+.font-size-sixteen{
+	font-size: 18px;
+}
