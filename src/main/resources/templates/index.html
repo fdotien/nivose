@@ -6,6 +6,93 @@
 <head>
     <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5b01c8393e4a630011ba6f95&product=inline-share-buttons' async='async'></script>
     <div th:replace="fragments/header :: header-css"></div>
+    <style type="text/css">
+    #myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+    </style>
 </head>
 <body>
 	<div th:replace="fragments/header :: header"></div>
@@ -16,54 +103,31 @@
 
 			<!-- PAGE CONTENT WRAPPER -->
 			<div class="page-content-wrap">
-
 				<div class="row">
 					<div class="col-md-12">
 						<a th:href="@{/}" class="tofbook-logo"><img src="img/LogoMakr_2.png"
 							alt="logo de *tofbook"></a>
 						<h1 class="page-big-text">
-							Créez de beaux albums photo, <br>Avec vos amis. <br>En quelques cliques.
+							Créez de beaux albums photo, <br>avec vos amis, <br>En quelques cliques.
 						</h1>
-
- <!--  <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <iframe width="100%" height="350" src="" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- Modal -->
-<div class="modal fade bs-example-modal-lg" id="introVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-      </div>
-      <div class="modal-body">
-        <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/<videoid>?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-</div>
 						<a th:href="@{/create/scratch}"
 							class="btn btn-primary btn-lg btn-rounded home-buttons">Commencer</a>
-						<!-- <a class="btn btn-default btn-lg  home-buttons btn-rounded "
-							data-toggle="modal" id="viewVideo" data-target="#video-home">
-							<span class="fa fa-play-circle " style="font-size:28px;color:#33414e;"></span>
-							<span style="color:#33414e;"> Démo</span>
-						</a> -->
-						<a class="btn btn-default btn-lg home-buttons btn-rounded " id="home-video"
-						data-video="https://www.youtube.com/embed/HBdcL7YsdBY" data-toggle="modal" data-target="#videoModal">
+						<a class="btn btn-default btn-lg  home-buttons btn-rounded "
+							id="myImg" >
 							<span class="fa fa-play-circle " style="font-size:28px;color:#33414e;"></span>
 							<span style="color:#33414e;"> Démo</span>
 						</a>
 						<p class="font-size-sixteen">
 							Déjà inscrit? <a th:href="@{/login}" data-signin >Connectez-vous ici </a><br/> <br/>
 						</p>
+						
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close stop-video">&times;</span>
+  <iframe id="img01"  src="https://www.youtube-nocookie.com/embed/g4Hbz2jLxvQ?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen="true" allowscriptaccess="always"></iframe>
+  <div id="caption"></div>
+</div>
 						<div class="white">
 							<div class="container">
 								<section class="features">
@@ -106,7 +170,7 @@
 										<span class="hidden-xs"> • 
 											<a href="#" target="_blank">Blog</a>
 										</span> • 
-										<a data-toggle="modal" data-target="#pricing" href="#">prix</a> • 
+										<a data-toggle="modal" data-target="#pricing" href="#">Prix</a> • 
 										<a href="#" target="_blank">100% Satisfait</a> 
 										<span class="hidden-xs"> • 
 											<a href="#"	target="_blank">Partenariats</a>
@@ -124,88 +188,6 @@
 								</div>
 							</div>
 						</footer>
-						
-				<!-- 		<div class="modal" id="video-home" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="defModalHead">DEMO</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Some content in modal example</p>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-						<!-- <div class="modal fade demo-modal" id="video-home" tabindex="-1"
-							role="dialog" aria-labelledby="video-home" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									<div class="modal-body">
-										<div class="video-frame">
-											
-<iframe class="hidden-xs" align="center" src="about:blank" data-src="//player.vimeo.com/video/239099629?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" width="578px" height="325px" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-<iframe class="visible-xs" align="center" src="about:blank" data-src="//player.vimeo.com/video/233472105?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" width="320px" height="180px" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-
-										</div>
-										<p class="text-center">
-											De beaux albums photos partagés, en ligne et sur papier -
-											créé en quelques secondes! <br> <i>C&#039;est
-												GRATUIT en ligne! Imprimer est facultatif et pratique</i>
-										</p>
-										<div class="call-to-actions">
-											<a data-dismiss="modal" data-toggle="modal" th:href="@{#}"
-												data-target="#pricing" class="btn btn-default btn-lg">Prix</a>
-											<a th:href="@{/create/scratch/?utm_content=modal-demo}"
-												class="btn btn-primary btn-lg">Créez votre tofbook</a>
-										</div>
-										<div class="other-products">
-											<a th:href="@{/create/instagram/?utm_content=modal-demo}"><span
-												class="icon-instagram"></span>Book By Time and Tag</a> <a
-												th:href="@{/create/year/?utm_content=modal-demo}"><span
-												class="icon-facebook"></span><span class="icon-instagram"></span>Year
-												Book 2003-2018</a> <a
-												th:href="@{/create/scratch/?utm_content=modal-demo}"><span
-												class="icon-facebook"></span><span class="icon-instagram"></span><span
-												class="icon-up-circled"></span><b>&amp; more!</b> ScrapBook</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
-<!-- 
-						<div class="modal fade" id="videoBook" tabindex="-1" role="dialog"
-							aria-labelledby="create-options" aria-hidden="true"
-							style="display: none;">
-							<div class="modal-dialog">
-								<div class="modal-content" style="width: 664px;">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									<div class="modal-body">
-										<div class="video">
-											
-<iframe src="https://r.vimeo.com/video/173481188?badge=0&byline=0&title=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-										</div>
-										<div class="button-container">
-											<a
-												th:href="@{/create/scratch/?utm_content=modal-videobook#createOptions}"
-												class="btn btn-primary btn-lg cta-video cta-video-create"
-												data-tracking-label="cta-video-create">Create your
-												tofbook</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
 					</div>
 				</div>
 
@@ -217,31 +199,42 @@
 	<!-- END PAGE CONTAINER -->
 
 	<div th:replace="fragments/footer :: footer"></div>
-<!-- <script>
-  $(function() {
-    $("#home-video").click(function () {
-      var theModal = $(this).data("target"),
-      videoSRC = $(this).attr("data-video"),
-      videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
-      $(theModal + ' iframe').attr('src', videoSRCauto);
-      $(theModal + ' button.close').click(function () {
-        $(theModal + ' iframe').attr('src', videoSRC);
-      });
-    });
-  });
-  </script> -->
-  <script>
-    var youtubeFunc ='';
-    var outerDiv = document.getElementById("introVideo");
-    var youtubeIframe = outerDiv.getElementsByTagName("iframe")[0].contentWindow;
-    $('#introVideo').on('hidden.bs.modal', function (e) {
-    youtubeFunc = 'pauseVideo';
-    youtubeIframe.postMessage('{"event":"command","func":"' + youtubeFunc + '","args":""}', '*');
-    });
-    $('#introVideo').on('shown.bs.modal', function (e) {
-        youtubeFunc = 'playVideo';
-      youtubeIframe.postMessage('{"event":"command","func":"' + youtubeFunc + '","args":""}', '*');
-    });
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = "https://www.youtube-nocookie.com/embed/g4Hbz2jLxvQ??enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&amp;start=5";
+    captionText.innerHTML = "Vidéo de démo";
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+/* span.onclick = function() { 
+    modal.style.display = "none";
+    
+} */
+
+
+$('a.play-video').click(function(){
+	$('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+});
+
+$('span.stop-video').click(function(){
+	$('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+	modal.style.display = "none";
+});
+
+$('a.pause-video').click(function(){
+	$('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+});
 </script>
 </body>
 </html>
