@@ -1,241 +1,75 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
-	lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" lang="fr">
 <head>
-    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5b01c8393e4a630011ba6f95&product=inline-share-buttons' async='async'></script>
-    <div th:replace="fragments/header :: header-css"></div>
-    <style type="text/css">
-    #myImg {
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#myImg:hover {opacity: 0.7;}
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
-
-/* Modal Content (image) */
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-
-/* Caption of Modal Image */
-#caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
-}
-
-/* Add Animation */
-.modal-content, #caption {    
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-@-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
-    to {-webkit-transform:scale(1)}
-}
-
-@keyframes zoom {
-    from {transform:scale(0)} 
-    to {transform:scale(1)}
-}
-
-/* The Close Button */
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-    .modal-content {
-        width: 100%;
-    }
-}
-    </style>
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5b01c8393e4a630011ba6f95&product=inline-share-buttons' async='async'></script>
+<div th:replace="fragments/header :: header-css"></div>
+<style type="text/css">
+</style>
 </head>
 <body>
-	<div th:replace="fragments/header :: header"></div>
+	<!-- <div th:replace="fragments/header :: header"></div> -->
+	
 	<!-- START PAGE CONTAINER -->
 	<div class="page-container page-navigation-top ">
 		<!-- PAGE CONTENT -->
 		<div class="page-content">
-
 			<!-- PAGE CONTENT WRAPPER -->
 			<div class="page-content-wrap">
 				<div class="row">
 					<div class="col-md-12">
-						<a th:href="@{/}" class="tofbook-logo"><img src="img/LogoMakr_2.png"
-							alt="logo de *tofbook"></a>
+						<a th:href="@{/}" class="tofbook-logo">
+							<img src="img/LogoMakr_2.png" alt="logo de *tofbook"></a>
 						<h1 class="page-big-text">
-							Créez de beaux albums photo, <br>avec vos amis, <br>En quelques cliques.
+							Créez de beaux albums photoS, <br>avec vos amis, <br>En quelques cliques.
 						</h1>
-						<a th:href="@{/create/scratch}"
-							class="btn btn-primary btn-lg btn-rounded home-buttons">Commencer</a>
-						<a class="btn btn-default btn-lg  home-buttons btn-rounded "
-							id="myImg" >
-							<span class="fa fa-play-circle " style="font-size:28px;color:#33414e;"></span>
-							<span style="color:#33414e;"> Démo</span>
+						<a th:href="@{/create/scratch}"	class="btn btn-primary btn-lg btn-rounded home-buttons">Commencer</a>
+						<a class="btn btn-default btn-lg  home-buttons btn-rounded " id="demoVideoButton"> 
+							<span class="fa fa-play-circle " style="font-size: 28px; color: #33414e;"></span> 
+							<span style="color: #33414e;"> Démo</span>
 						</a>
 						<p class="font-size-sixteen">
-							Déjà inscrit? <a th:href="@{/login}" data-signin >Connectez-vous ici </a><br/> <br/>
+							Déjà inscrit? <a th:href="@{/login}" data-signin>Connectez-vous	ici </a><br /> <br />
 						</p>
-						
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <span class="close stop-video">&times;</span>
-  <iframe id="img01"  src="https://www.youtube-nocookie.com/embed/g4Hbz2jLxvQ?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen="true" allowscriptaccess="always"></iframe>
-  <div id="caption"></div>
-</div>
-						<div class="white">
-							<div class="container">
-								<section class="features">
-									<div class="row">
-										<div class="col-sm-4">
-											<h2>Créez</h2>
-											<p>Choisissez votre titre pour pouvoir ajouter
-												directement vos photos &amp; légendes depuis vos réseaux
-												sociaux, ou téléchargez-les.</p>
-										</div>
-										<div class="col-sm-4">
-											<h2>Invitez &amp; Collaborez</h2>
-											<p>Invitez vos proches à contribuer à votre album
-												tofbook afin qu&#039;ils puissent y ajouter leurs propres
-												moments.</p>
-										</div>
-										<div class="col-sm-4">
-											<h2>Collecter &amp; feuilleter</h2>
-											<p>Réunissez tous vos moments et profitez-en pour
-												toujours avec vos souvenir en ligne ou dans un joli livre
-												imprimé.</p>
-										</div>
-									</div>
-								</section>
-								<p class="font-size-sixteen bellow-text">
-									<i>C&#039;est GRATUIT en ligne! Imprimer est facultatif et
-										pratique. </i> <a data-toggle="modal" th:href="@{#}"
-										data-target="#pricing" > Prix</a>
-								</p>
-							</div>
+						<!-- The Modal -->
+						<div id="demoVideoModal" class="modal ">
+							<span class="close stop-video">&times;</span>	
+								<iframe id="demoVideo" class="videoFrame"  frameborder="0" style="border: solid 4px #37474F;" ></iframe>						
+								<div id="caption"></div>
 						</div>
+						
 						<footer class="footer text-center">
 							<div class="container">
 								<div class="wrapper">
 									<div>
-										<a href="#" target="_blank">
-											<span class="hidden-xs">Aide &amp; FAQ</span>
+										<a href="#" target="_blank"> 
+											<span class="hidden-xs">Aide &amp; FAQ</span> 
 											<span class="hidden-sm hidden-md hidden-lg">FAQ</span>
 										</a> 
-										<span class="hidden-xs"> • 
-											<a href="#" target="_blank">Blog</a>
-										</span> • 
-										<a data-toggle="modal" data-target="#pricing" href="#">Prix</a> • 
-										<a href="#" target="_blank">100% Satisfait</a> 
-										<span class="hidden-xs"> • 
-											<a href="#"	target="_blank">Partenariats</a>
-										</span> • 
-										<a href="mailto:help@tofbook.com">Écrivez-nous</a>
-										<br>
+										<span class="hidden-xs"> • <a href="#" target="_blank">Blog</a>	</span> 
+										• <a data-toggle="modal" data-target="#pricing" href="#">Prix</a>	
+										• <a href="#" target="_blank">100% Satisfait</a> 
+										<span class="hidden-xs"> • <a href="#" target="_blank">Partenariats</a>	</span> 
+										• <a href="mailto:help@tofbook.com">Écrivez-nous</a> <br>
 									</div>
-									<br>
-									<br>
-									<div >
-							               &copy; Copyright 2018 tofbook
-							            <br>
-							               Design by <a title="fdotien" href="http://fdotien.cf" target="_blank">fdotien</a>
+									<br> <br>
+									<div>
+										&copy; Copyright 2018 tofbook <br> Design by 
+										<a	title="fdotien" href="http://fdotien.cf" target="_blank">fdotien</a>
 									</div>
 								</div>
 							</div>
 						</footer>
 					</div>
 				</div>
-
 			</div>
 			<!-- PAGE CONTENT WRAPPER -->
 		</div>
 		<!-- END PAGE CONTENT -->
 	</div>
 	<!-- END PAGE CONTAINER -->
-
 	<div th:replace="fragments/footer :: footer"></div>
-<script>
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById('myImg');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = "https://www.youtube-nocookie.com/embed/g4Hbz2jLxvQ??enablejsapi=1&version=3&playerapiid=ytplayer&rel=0&amp;start=5";
-    captionText.innerHTML = "Vidéo de démo";
-}
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-/* span.onclick = function() { 
-    modal.style.display = "none";
-    
-} */
-
-
-$('a.play-video').click(function(){
-	$('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
-});
-
-$('span.stop-video').click(function(){
-	$('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
-	modal.style.display = "none";
-});
-
-$('a.pause-video').click(function(){
-	$('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-});
-</script>
+	 <script>
+  </script>
 </body>
 </html>
 

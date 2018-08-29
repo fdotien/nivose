@@ -1,83 +1,176 @@
 @charset "ISO-8859-1";
 
 /* tofbook logo */
-.tofbook-logo{
-	text-align: center;
-    display: block;
-    padding-top: 30px;
+.tofbook-logo {
+	text-align: left;
+	display: block;
+	padding-top: 50px;
+	padding-left: 30px;
 }
 
 .tofbook-logo a {
-    background: 0 0;
+	background: 0 0;
 }
 
- .page-big-text {
- 	 font-family: Century Gothic;
-	 margin: .67em 0;
-     word-wrap: break-word;
-     font-size: 60px;
+.page-big-text {
+	font-family: Century Gothic;
+	margin: .67em 0;
+	word-wrap: break-word;
+	font-size: 60px;
 }
 
 .page-big-text, h2, h3 {
-    letter-spacing: -1px;
-    text-shadow: 0 2px 4px rgba(0,0,0,.2);
-}
-.page-big-text, h2, h3{
-    margin-top: 19px;
-    margin-bottom: 14.5px;
-}
-.page-big-text, h2, h3, h4, h5, h6{
-    font-weight: 300;
-    line-height: 1.1;
-    color: #fff;
-    margin-bottom:60px;
-}
- 	
-.page-content-wrap {
-    text-align: center;
-    -webkit-animation: fade-in-down 1s .25s;
-    animation: fade-in-down 1s .25s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+	letter-spacing: -1px;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, .2);
 }
 
+.page-big-text, h2, h3 {
+	margin-top: 19px;
+	margin-bottom: 14.5px;
+}
+
+.page-big-text, h2, h3, h4, h5, h6 {
+	font-weight: 300;
+	line-height: 1.1;
+	color: #000000;
+	margin-bottom: 60px;
+}
+
+.page-content-wrap {
+	text-align: center;
+	-webkit-animation: fade-in-down 1s .25s;
+	animation: fade-in-down 1s .25s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
 
 /* On screens that are 992px wide or less, the background color is blue */
 @media screen and (max-width: 992px) {
-    .page-big-text {
-    font-size: 42px;
-    }
+	.page-big-text {
+		font-size: 42px;
+	}
 }
 
 /* On screens that are 600px wide or less, the background color is olive */
 @media screen and (max-width: 600px) {
-    .page-big-text {
-    font-size: 26px;
-    }
+	.page-big-text {
+		font-size: 26px;
+	}
 }
 
-.home-buttons{
-	padding-top:15px!important;
-	font-size: 30px!important;
-	height:60px;
-	width:300px;
-	margin:10px;
+.home-buttons {
+	padding-top: 15px !important;
+	font-size: 30px !important;
+	height: 60px;
+	width: 300px;
+	margin: 10px;
 }
 
-.home-buttons:hover{
+.home-buttons:hover {
 	background-color: #DDD;
 }
 
-.bellow-text{
-	margin-top: 20px!important;
-	margin-bottom: 60px!important;
+.bellow-text {
+	margin-top: 20px !important;
+	margin-bottom: 60px !important;
 }
-.features{
-	color:#33414e;
-	margin-bottom:40px;
-	font-size: 18px!important;
-	}
-	
-.font-size-sixteen{
+
+.features {
+	color: #33414e;
+	margin-bottom: 40px;
+	font-size: 18px !important;
+}
+
+.font-size-sixteen {
 	font-size: 18px;
 }
+/*Start DEMO MODAL */
+#demoVideoButton {
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+#demoVideoButton:hover {
+	opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content  */
+.modal-content {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+}
+
+/* Caption of Modal  */
+#caption {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+	text-align: center;
+	color: #ccc;
+	padding: 10px 0;
+	height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+	-webkit-animation-name: zoom;
+	-webkit-animation-duration: 0.6s;
+	animation-name: zoom;
+	animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+	from {-webkit-transform: scale(0)}
+	to {-webkit-transform: scale(1)}
+}
+
+@keyframes zoom {
+	from {transform: scale(0)}
+	to {transform: scale(1)}
+}
+
+/* The Close Button */
+.close {
+	padding-top: 40px;
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #f1f1f1;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+.close:hover, .close:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/* 100% Video Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+	.modal-content {
+		width: 100%;
+	}
+}
+
+/*End DEMO MODAL */

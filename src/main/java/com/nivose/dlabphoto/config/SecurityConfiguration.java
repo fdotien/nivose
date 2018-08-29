@@ -23,11 +23,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Qualifier("userDetailsService")
 	UserDetailsService userDetailsService;
 
-	@Autowired
+	/*@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
-	
+	*/
 	@Bean
 	public PasswordEncoder passwordEncoder(){
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -73,16 +73,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    web
 	       .ignoring()
 	       .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/fonts/**");
-	}
-    // create two users, admin and user
-/*    @Autowired
+	}  
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.inMemoryAuthentication()
-                .withUser("user").password(passwordEncoder().encode("user")).roles("USER")
-                .and()
                 .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN");
     }
+    // create two users, admin and user
+/*  
     
 	@Configuration
 	static class CacheableThymeleafConfiguration {
