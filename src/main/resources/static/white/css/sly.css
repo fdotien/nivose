@@ -1,0 +1,49 @@
+/* Frame */
+.frame {
+  overflow: hidden;
+}
+.frame > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: block;
+  white-space: nowrap;
+}
+.frame > ul > li {
+  display: inline-block;
+  width: auto;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.frame.ready > ul > li {
+  float: left;
+}
+.frame > ul > li.active {
+
+}
+
+/* Scrollbar */
+.scrollbar {
+  margin: 55px 0 20px 0;
+  height: 2px;
+  background: #dcdddf;
+  line-height: 0;
+}
+.scrollbar .handle {
+  width: 100px;
+  height: 100%;
+  background: #b67c5a;
+  cursor: pointer;
+  transition: background 0.3s ease-out; -moz-transition: background 0.3s ease-out; -webkit-transition: background 0.3s ease-out; -o-transition: background 0.3s ease-out;
+}
+.scrollbar .handle:hover{background: #000;}
+.scrollbar .handle.dragged{background: #000;}
+.scrollbar .handle .mousearea {
+  position: absolute;
+  top: -9px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
